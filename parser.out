@@ -1,0 +1,103 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> frase
+Rule 1     frase -> frase HANZI
+Rule 2     frase -> HANZI
+Rule 3     frase -> frase PONTUACAO
+Rule 4     frase -> frase HANZI frase
+
+Terminals, with rules where they appear
+
+HANZI                : 1 2 4
+PONTUACAO            : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+frase                : 1 3 4 4 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . frase
+    (1) frase -> . frase HANZI
+    (2) frase -> . HANZI
+    (3) frase -> . frase PONTUACAO
+    (4) frase -> . frase HANZI frase
+
+    HANZI           shift and go to state 2
+
+    frase                          shift and go to state 1
+
+state 1
+
+    (0) S' -> frase .
+    (1) frase -> frase . HANZI
+    (3) frase -> frase . PONTUACAO
+    (4) frase -> frase . HANZI frase
+
+    HANZI           shift and go to state 3
+    PONTUACAO       shift and go to state 4
+
+
+state 2
+
+    (2) frase -> HANZI .
+
+    HANZI           reduce using rule 2 (frase -> HANZI .)
+    PONTUACAO       reduce using rule 2 (frase -> HANZI .)
+    $end            reduce using rule 2 (frase -> HANZI .)
+
+
+state 3
+
+    (1) frase -> frase HANZI .
+    (4) frase -> frase HANZI . frase
+    (1) frase -> . frase HANZI
+    (2) frase -> . HANZI
+    (3) frase -> . frase PONTUACAO
+    (4) frase -> . frase HANZI frase
+
+  ! shift/reduce conflict for HANZI resolved as shift
+    PONTUACAO       reduce using rule 1 (frase -> frase HANZI .)
+    $end            reduce using rule 1 (frase -> frase HANZI .)
+    HANZI           shift and go to state 2
+
+  ! HANZI           [ reduce using rule 1 (frase -> frase HANZI .) ]
+
+    frase                          shift and go to state 5
+
+state 4
+
+    (3) frase -> frase PONTUACAO .
+
+    HANZI           reduce using rule 3 (frase -> frase PONTUACAO .)
+    PONTUACAO       reduce using rule 3 (frase -> frase PONTUACAO .)
+    $end            reduce using rule 3 (frase -> frase PONTUACAO .)
+
+
+state 5
+
+    (4) frase -> frase HANZI frase .
+    (1) frase -> frase . HANZI
+    (3) frase -> frase . PONTUACAO
+    (4) frase -> frase . HANZI frase
+
+  ! shift/reduce conflict for HANZI resolved as shift
+  ! shift/reduce conflict for PONTUACAO resolved as shift
+    $end            reduce using rule 4 (frase -> frase HANZI frase .)
+    HANZI           shift and go to state 3
+    PONTUACAO       shift and go to state 4
+
+  ! HANZI           [ reduce using rule 4 (frase -> frase HANZI frase .) ]
+  ! PONTUACAO       [ reduce using rule 4 (frase -> frase HANZI frase .) ]
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for HANZI in state 3 resolved as shift
+WARNING: shift/reduce conflict for HANZI in state 5 resolved as shift
+WARNING: shift/reduce conflict for PONTUACAO in state 5 resolved as shift
