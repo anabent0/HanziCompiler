@@ -3,3 +3,6 @@ frase → frase HANZI	        |    frase.val = frase.val + [HANZI]
 frase → HANZI	            |    frase.val = [HANZI]
 frase → frase PONTUACAO	    |    frase.val = frase.val
 frase → frase HANZI frase	|    frase.val = frase.val + [HANZI] + frase.val
+
+-- CRIAR --
+frase -> PONTUACAO frase    |    frase.val = frase.val + frase.val
