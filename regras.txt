@@ -1,8 +1,17 @@
-Produções	                |    Ações Semânticas
-frase → frase HANZI	        |    frase.val = frase.val + [HANZI]
-frase → HANZI	            |    frase.val = [HANZI]
-frase → frase PONTUACAO	    |    frase.val = frase.val
-frase → frase HANZI frase	|    frase.val = frase.val + [HANZI] + frase.val
+Produções	                       |    Ações Semânticas
+frase → frase HANZI	               |    frase.val = frase.val + [HANZI]
+frase → HANZI	                   |    frase.val = [HANZI]
+frase → frase PONTUACAO	           |    frase.val = frase.val
+frase → frase HANZI frase	       |    frase.val = frase.val + [HANZI] + frase.val
+frase → frase PONTUACAO frase      |    frase.val = frase.val + frase.val
+frase → pronome verbo substantivo  |    frase.val = pronome.val + verbo.val + substantivo.val
+frase → expressao                  |    frase.val = expressao.val
+verbo → VERBO                      |    verbo.val = verbo.val
+substantivo →  SUBSTANTIVO         |    substantivo.val = substantivo.val
 
--- CRIAR --
-frase -> PONTUACAO frase    |    frase.val = frase.val + frase.val
+
+--IMPLEMENTAR--
+expressão → expressao              |    expressao.val = expressao
+
+--> uso de "e" e expressao ma para frases interrogativas
+--> consertar frase PONTUACAO frase
