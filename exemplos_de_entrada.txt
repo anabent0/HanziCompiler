@@ -1,6 +1,15 @@
-    我要米饭。
-    你要茶。
-    我要点咖啡。
-    你吃饺子。
-    我要牛肉面。
-    你喝果汁。
+Sem expressões
+我要米饭
+你喝茶
+
+Com expressões no final
+我吃饺子谢谢
+她看书真的吗
+
+Com expressões no inicio
+谢谢你学习书
+对不起我去学校
+
+Com expressões no inicio e final
+谢谢你去饭馆对吗
+嗨我要米饭请

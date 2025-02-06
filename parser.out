@@ -1,0 +1,170 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> frase
+Rule 1     frase -> pronome verbo substantivo
+Rule 2     frase -> pronome verbo substantivo expressao
+Rule 3     frase -> expressao pronome verbo substantivo
+Rule 4     frase -> expressao pronome verbo substantivo expressao
+Rule 5     pronome -> PRONOME
+Rule 6     verbo -> VERBO
+Rule 7     substantivo -> SUBSTANTIVO
+Rule 8     expressao -> EXPRESSOES
+
+Terminals, with rules where they appear
+
+EXPRESSOES           : 8
+PRONOME              : 5
+SUBSTANTIVO          : 7
+VERBO                : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+expressao            : 2 3 4 4
+frase                : 0
+pronome              : 1 2 3 4
+substantivo          : 1 2 3 4
+verbo                : 1 2 3 4
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . frase
+    (1) frase -> . pronome verbo substantivo
+    (2) frase -> . pronome verbo substantivo expressao
+    (3) frase -> . expressao pronome verbo substantivo
+    (4) frase -> . expressao pronome verbo substantivo expressao
+    (5) pronome -> . PRONOME
+    (8) expressao -> . EXPRESSOES
+
+    PRONOME         shift and go to state 4
+    EXPRESSOES      shift and go to state 5
+
+    frase                          shift and go to state 1
+    pronome                        shift and go to state 2
+    expressao                      shift and go to state 3
+
+state 1
+
+    (0) S' -> frase .
+
+
+
+state 2
+
+    (1) frase -> pronome . verbo substantivo
+    (2) frase -> pronome . verbo substantivo expressao
+    (6) verbo -> . VERBO
+
+    VERBO           shift and go to state 7
+
+    verbo                          shift and go to state 6
+
+state 3
+
+    (3) frase -> expressao . pronome verbo substantivo
+    (4) frase -> expressao . pronome verbo substantivo expressao
+    (5) pronome -> . PRONOME
+
+    PRONOME         shift and go to state 4
+
+    pronome                        shift and go to state 8
+
+state 4
+
+    (5) pronome -> PRONOME .
+
+    VERBO           reduce using rule 5 (pronome -> PRONOME .)
+
+
+state 5
+
+    (8) expressao -> EXPRESSOES .
+
+    PRONOME         reduce using rule 8 (expressao -> EXPRESSOES .)
+    $end            reduce using rule 8 (expressao -> EXPRESSOES .)
+
+
+state 6
+
+    (1) frase -> pronome verbo . substantivo
+    (2) frase -> pronome verbo . substantivo expressao
+    (7) substantivo -> . SUBSTANTIVO
+
+    SUBSTANTIVO     shift and go to state 10
+
+    substantivo                    shift and go to state 9
+
+state 7
+
+    (6) verbo -> VERBO .
+
+    SUBSTANTIVO     reduce using rule 6 (verbo -> VERBO .)
+
+
+state 8
+
+    (3) frase -> expressao pronome . verbo substantivo
+    (4) frase -> expressao pronome . verbo substantivo expressao
+    (6) verbo -> . VERBO
+
+    VERBO           shift and go to state 7
+
+    verbo                          shift and go to state 11
+
+state 9
+
+    (1) frase -> pronome verbo substantivo .
+    (2) frase -> pronome verbo substantivo . expressao
+    (8) expressao -> . EXPRESSOES
+
+    $end            reduce using rule 1 (frase -> pronome verbo substantivo .)
+    EXPRESSOES      shift and go to state 5
+
+    expressao                      shift and go to state 12
+
+state 10
+
+    (7) substantivo -> SUBSTANTIVO .
+
+    EXPRESSOES      reduce using rule 7 (substantivo -> SUBSTANTIVO .)
+    $end            reduce using rule 7 (substantivo -> SUBSTANTIVO .)
+
+
+state 11
+
+    (3) frase -> expressao pronome verbo . substantivo
+    (4) frase -> expressao pronome verbo . substantivo expressao
+    (7) substantivo -> . SUBSTANTIVO
+
+    SUBSTANTIVO     shift and go to state 10
+
+    substantivo                    shift and go to state 13
+
+state 12
+
+    (2) frase -> pronome verbo substantivo expressao .
+
+    $end            reduce using rule 2 (frase -> pronome verbo substantivo expressao .)
+
+
+state 13
+
+    (3) frase -> expressao pronome verbo substantivo .
+    (4) frase -> expressao pronome verbo substantivo . expressao
+    (8) expressao -> . EXPRESSOES
+
+    $end            reduce using rule 3 (frase -> expressao pronome verbo substantivo .)
+    EXPRESSOES      shift and go to state 5
+
+    expressao                      shift and go to state 14
+
+state 14
+
+    (4) frase -> expressao pronome verbo substantivo expressao .
+
+    $end            reduce using rule 4 (frase -> expressao pronome verbo substantivo expressao .)
+
