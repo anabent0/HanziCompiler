@@ -1,7 +1,5 @@
 Produções	                                  |    Ações Semânticas
-frase → frase HANZI	                          |    frase.val = frase.val + [HANZI]
-frase → HANZI	                              |    frase.val = [HANZI]
-frase → frase HANZI frase	                  |    frase.val = frase.val + [HANZI] + frase.val
+
 frase → pronome verbo substantivo             |    frase.val = pronome.val + verbo.val + substantivo.val
 frase → pronome verbo substantivo expressao   |    frase.val = pronome.val + verbo.val + substantivo.val + expressao.val
 frase -> expressao pronome verbo substantivo  |    frase.val = expressao.val + pronome.val + verbo.val + substantivo.val
